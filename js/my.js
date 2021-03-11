@@ -1,126 +1,45 @@
-var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+var subtotal = document.getElementById("subtotal");
+var tax = document.getElementById("tax");
+var total = document.getElementById("total");
+var aPaid = document.getElementById("aPaid");
+var change = document.getElementById("change");
+var submit = document.getElementById("submit");
+subtotal.min = 100;
 
-
-var month = parseInt(prompt("Enter month (1 - 12) here: "));
-var day = parseInt(prompt("1st day of the month (1-7) where 1 is Sunday and 7 is Saturday. "));
-
-var end = true
-var currentDay = 1; 
-var checker = 0; 
-var tableBody = document.getElementById("body");
-
-
-if(month < 13 && day < 8 && month > 0 && day > 0)
-{
-    var title = document.getElementById("title");
-    var titleTextNode = document.createTextNode(months[month - 1]);
-    title.appendChild(titleTextNode);   
-    while(end){
-        var tr = document.createElement("tr");
-        for(var i = 0; i < days.length; i++){
-            if(i == day - 1)
-            {
-                if(checker == 1)
-                {
-                    var td = document.createElement("td");
-                    var tdTextNode = document.createTextNode(currentDay);
-                    td.appendChild(tdTextNode);
-                    tr.appendChild(td);
-                    tableBody.appendChild(tr);
-                    if(i == 0)
-                    {
-                        td.className =  "body-color";
-                    }
-                    currentDay++;
-                }
-                else
-                { 
-                    var td = document.createElement("td");
-                    var tdTextNode = document.createTextNode(currentDay);
-                   
-                    td.appendChild(tdTextNode);
-                    tr.appendChild(td);
-                    tableBody.appendChild(tr);
-                    
-                    if(i == 0)
-                    { 
-                        td.className =  "body-color";
-                    }
-                    currentDay++;
-                    checker = 1; 
-                }
-            }
-            else{
-                if(checker == 1)
-                {   
-                    if(currentDay >= 32 && (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12))
-                    { 
-                        end = false;
-                        break;
-                    }
-
-                    else if(currentDay >= 31 && (month == 4 || month == 6 || month == 9 || month == 11 ))
-                    { 
-                        end = false;
-                        break;
-                    }
-
-                    else if(currentDay >= 28 && (month == 2))
-                    { 
-                        var td = document.createElement("td");
-                        var tdTextNode = document.createTextNode('28');
-                            
-                        td.appendChild(tdTextNode);
-                        tr.appendChild(td);
-                        tableBody.appendChild(tr);
-
-                        if(i == 0)
-                        { 
-                            td.className =  "body-color";
-                        }
-                        end = false;
-                        break;
-                    }
-
-                    else
-                    { 
-                        var td = document.createElement("td");
-                        var tdTextNode = document.createTextNode(currentDay);
-                        
-                        td.appendChild(tdTextNode);
-                        tr.appendChild(td);
-                        tableBody.appendChild(tr);
-                        
-                        if(i == 0)
-                        {
-                            td.className =  "body-color";
-                        }
-                        currentDay++;
-                    }
-                }
-                else
-                { 
-                    var td = document.createElement("td");
-                    var tdTextNode = document.createTextNode('');
-                    
-                    td.appendChild(tdTextNode);
-                    tr.appendChild(td);
-                    tableBody.appendChild(tr);
-                   
-                    if(i == 0)
-                    {
-                        td.className =  "body-color";
-                    }
-                }
-            }
-        }
+subtotal.addEventListener("change", function(){
+    if(parseInt(subtotal.value) >= 100 && parseInt(subtotal.value) <= 10000)
+    {
+        submit.style.backgroundColor = "green";
+        aPaid.disabled = false;
+        submit.disabled = false;
+        tax.value = (subtotal.value * 0.12);
+        total.value = parseInt(tax.value) + parseInt(subtotal.value);
+        aPaid.min = total.value;
+        aPaid.value = total.value;
+        change.value = parseInt(aPaid.value) - parseInt(total.value);
     }
-}
+    
+    else
+    {
+        submit.style.backgroundColor = "#8b0000";
+        aPaid.disabled = true;
+        submit.disabled = true;
+    }
+})
 
-else
-{
-    var hone = document.getElementById("txtError");
-    var honeTextNode = document.createTextNode("Invalid Input");
-    hone.appendChild(honeTextNode);
-}
+aPaid.addEventListener("change", function(){
+    change.value = parseInt(aPaid.value) - parseInt(total.value);
+    
+    if(parseInt(change.value) >= 0)
+    {
+        submit.style.backgroundColor = "green";
+        submit.disabled = false;
+    }
+
+    else
+    {
+        submit.style.backgroundColor = "#8b0000";
+        submit.disabled = true;
+    }
+})
+

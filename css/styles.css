@@ -1,56 +1,24 @@
 
 body {
-    background-image: url("img/cs-addu-100.png");
-   }
+    font-family: Verdana;
+}
 
-/*.table1 {
-    align-self: center;
-}*/
+input {
+    border-radius: 4px;
+    height: 25px;
+    text-align: right;
+    font-family: Verdana;
+}
 
-/*table {
+
+button
+{
+    border-radius: 4px;
+    color: white;
     width: 100px;
-    height: 100px;
-    border: 1px solid black;
-}*/
-
-/*table .table1, th, td{
-    font-size: 25px;
-    padding: 5px 25px;
-    border: 1px solid black;
-    text-align: center;
-}*/
-
-/*td {
-    border: 1px solid black;
-    text-align: center;
+    height: 30px;
 }
 
-
-
-.body-color{
-    background-color: rgb(233, 68, 68);
-}*/
-
-table{
-    width: 400px;
-    height: 350px;
-
-}
-
-.body-color{
-    background-color: #ffc3b1;
-}
-td{
-    border: 1px solid black;
-    text-align: center;
-}
-
-#title {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-th {
-    border: 1px solid black;
-    font-weight: lighter;
+.tax, .total, .aPaid, .change {
+    background-color: grey;
 }

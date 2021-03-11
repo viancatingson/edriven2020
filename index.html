@@ -5,34 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Calendar </title>
+    <title>PA 3</title>
 </head>
 
 <body>
-    <h1 id="txtError"></h1>
-    <table>
-        <thead>
-            <tr id="title-section">
-                <th id="title" colspan="7"></th>
-            </tr>
-            <tr class= "days">
-                <th style="background-color:red; color: white;">Sun</th>
-                <th>Mon</th>
-                <th>Tue</th>
-                <th>Wed</th>
-                <th>Thu</th>
-                <th>Fri</th>
-                <th>Sat</th>
-                
-            </tr>
-
-        </thead>
-        <tbody id='body'>
-        </tbody>
-
+    <form action="">
+        <input type="number" id="subtotal" name="subtotal" placeholder="Subtotal"> User input from 100 to 10,000 <br><br>
+  
+        <input type="text" id="tax" name="tax" placeholder="Tax" style="background-color:rgb(182, 182, 182)" disabled = "true"> +12% Tax <br><br>
         
-    </table>
-    
+        <input type="text" id="total" name="total" placeholder="Total" style="background-color:rgb(182, 182, 182)" disabled = "true"> Subtotal + Tax <br><br>
+        
+        <input type="number" id="aPaid" name="aPaid" placeholder="Amount Paid" style="background-color:rgb(182, 182, 182)" disabled = "true"> Minimum is base on Subtotal + Tax <br><br>
+        
+        <input type="text" id="change" name="change" placeholder="Change" style="background-color:rgb(182, 182, 182)" disabled = "true"> Amount Paid - Total <br><br>
+  
+        <button type="submit" id="submit" name="submit" style="background-color: #8b0000">Pay</button>
+    </form>
+
     <script src="js/my.js"></script>
 </body>
 </html>
