@@ -1,3 +1,24 @@
-h1 {
-    color: yellow;
+
+body {
+    font-family: Verdana;
+}
+
+input {
+    border-radius: 4px;
+    height: 25px;
+    text-align: right;
+    font-family: Verdana;
+}
+
+
+button
+{
+    border-radius: 4px;
+    color: white;
+    width: 100px;
+    height: 30px;
+}
+
+.tax, .total, .aPaid, .change {
+    background-color: grey;
 }
